@@ -6,10 +6,10 @@ provider:
   stage: prod
   ecr:
     images:
-      php-fpm-83-pgdump:
+      arm-php-fpm-83-pgdump:
         path: .
         file: Dockerfile.fpm.prod
-      php-console-83-pgdump:
+      arm-php-console-83-pgdump:
         path: .
         file: Dockerfile.console.prod
   environment:
@@ -42,8 +42,7 @@ functions:
 
   artisan:
     architecture: arm64
-    image: 
-      name: php-console-83-pgdump
+    image: arm-php-console-83-pgdump
 
 plugins:
   - ./vendor/bref/bref
