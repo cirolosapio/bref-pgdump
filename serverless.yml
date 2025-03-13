@@ -35,13 +35,15 @@ package:
 
 functions:
   web:
-    architecture: arm64
-    url: true
+    # architecture: arm64
+    # url: true
     image: 
       name: php-fpm-83-pgdump
+    events:
+        - httpApi: '*'
 
   artisan:
-    architecture: arm64
+    # architecture: arm64
     image: 
       name: php-console-83-pgdump
 
