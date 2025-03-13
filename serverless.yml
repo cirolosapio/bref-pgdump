@@ -36,11 +36,11 @@ package:
 functions:
   web:
     # architecture: arm64
-    # url: true
+    url: true
     image: 
       name: php-fpm-83-pgdump
-    events:
-        - httpApi: '*'
+    # events:
+    #     - httpApi: '*'
 
   artisan:
     # architecture: arm64
