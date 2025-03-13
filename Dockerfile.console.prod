@@ -4,4 +4,4 @@ RUN yum install -y postgresql
 
 COPY . /var/task
 
-# CMD ["artisan"]
+CMD ["artisan"]

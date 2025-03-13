@@ -14,10 +14,10 @@ provider:
         file: Dockerfile.console.prod
   environment:
     APP_KEY: ${ssm:/${self:service}/APP_KEY}
-    BREF_BINARY_RESPONSES: "1"
-  apiGateway:
-    binaryMediaTypes:
-      - "*/*"
+  #   BREF_BINARY_RESPONSES: "1"
+  # apiGateway:
+  #   binaryMediaTypes:
+  #     - "*/*"
 
 package:
   patterns:
@@ -41,7 +41,6 @@ functions:
       name: php-fpm-83-pgdump
 
   artisan:
-    handler: artisan
     architecture: arm64
     image: 
       name: php-console-83-pgdump
