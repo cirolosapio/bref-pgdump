@@ -3,11 +3,11 @@ service: bref-pgdump
 provider:
   name: aws
   region: eu-central-1
+  stage: prod
   ecr:
     images:
       php-console-83-pgdump:
         path: ./Dockerfile.prod
-  stage: prod
   environment:
     APP_KEY: ${ssm:/${self:service}/APP_KEY}
     BREF_BINARY_RESPONSES: "1"
@@ -32,43 +32,9 @@ package:
 functions:
   web:
     handler: public/index.php
-    runtime: php-82-fpm
-    architecture: arm64
-    url: true
-    timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
-    events:
-      - httpApi: "*"
-
-  artisan:
     runtime: php-console-83-pgdump
     architecture: arm64
-    timeout: 720 # in seconds
-    events:
-      - schedule:
-          method: scheduler
-          rate: cron(0 13 ? * MON-FRI *)
-          timezone: Europe/Rome
-          input: '"app:notify-unbadged-users"'
-      - schedule:
-          method: scheduler
-          rate: cron(59 23 ? * * *)
-          timezone: Europe/Rome
-          input: '"app:close-open-presences"'
-      - schedule:
-          method: scheduler
-          rate: rate(1 days)
-          timezone: Europe/Rome
-          input: '"model:prune"'
-      - schedule:
-          method: scheduler
-          rate: cron(1 0 ? * * *)
-          timezone: Europe/Rome
-          input: '"backup:run"'
-      - schedule:
-          method: scheduler
-          rate: cron(2 0 ? * * *)
-          timezone: Europe/Rome
-          input: '"backup:clean"'
+    url: true
 
 plugins:
   - ./vendor/bref/bref
