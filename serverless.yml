@@ -7,8 +7,10 @@ provider:
   ecr:
     images:
       php-fpm-83-pgdump:
+        path: .
         file: Dockerfile.fpm.prod
       php-console-83-pgdump:
+        path: .
         file: Dockerfile.console.prod
   environment:
     APP_KEY: ${ssm:/${self:service}/APP_KEY}
