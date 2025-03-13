@@ -38,7 +38,7 @@ functions:
     architecture: arm64
     url: true
     image: 
-      name: php-fpm-83-pgdump
+      name: arm-php-fpm-83-pgdump
 
   artisan:
     architecture: arm64
