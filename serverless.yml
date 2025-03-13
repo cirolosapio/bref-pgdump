@@ -39,8 +39,6 @@ functions:
     url: true
     image: 
       name: php-fpm-83-pgdump
-    # events:
-    #     - httpApi: '*'
 
   artisan:
     # architecture: arm64
