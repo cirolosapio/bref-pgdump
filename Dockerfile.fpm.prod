@@ -1,4 +1,4 @@
-FROM bref/php-83-console:2
+FROM bref/php-83-fpm:2
 
 RUN yum install -y postgresql
 

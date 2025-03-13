@@ -6,8 +6,10 @@ provider:
   stage: prod
   ecr:
     images:
+      php-fpm-83-pgdump:
+        path: ./Dockerfile.fpm.prod
       php-console-83-pgdump:
-        path: ./Dockerfile.prod
+        path: ./Dockerfile.console.prod
   environment:
     APP_KEY: ${ssm:/${self:service}/APP_KEY}
     BREF_BINARY_RESPONSES: "1"
@@ -31,11 +33,13 @@ package:
 
 functions:
   web:
-    handler: public/index.php
-    runtime: php-console-83-pgdump
+    runtime: php-fpm-83-pgdump
     architecture: arm64
     url: true
 
+  artisan:
+    runtime: php-console-83-pgdump
+    architecture: arm64
+
 plugins:
   - ./vendor/bref/bref
-  # - ./vendor/bref/extra-php-extensions
