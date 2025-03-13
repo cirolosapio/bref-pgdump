@@ -33,13 +33,15 @@ package:
 
 functions:
   web:
-    runtime: php-fpm-83-pgdump
     architecture: arm64
     url: true
+    image: 
+      name: php-fpm-83-pgdump
 
   artisan:
-    runtime: php-console-83-pgdump
     architecture: arm64
+    image: 
+      name: php-console-83-pgdump
 
 plugins:
   - ./vendor/bref/bref
