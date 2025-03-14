@@ -9,7 +9,7 @@ Route::get('/', function () {
 Route::get('test', fn () => shell_exec('pg_dump --version'));
 
 Route::get('download', function () {
-    $size = (int) request()->validate(['size' => 'integer|max:6289443'])['size'] ?? 1000;
+    $size = (int) request()->validate(['size' => 'integer|max:6289442'])['size'] ?? 1000;
 
     $content = str_repeat('A', $size);
 
