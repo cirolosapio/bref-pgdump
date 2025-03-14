@@ -8,6 +8,8 @@ Route::get('/', function () {
 
 Route::get('test', fn () => shell_exec('pg_dump --version'));
 
+Route::get('info', fn () => phpinfo());
+
 Route::get('download', function () {
     $size = (int) request()->validate(['size' => 'integer|max:6289442'])['size'] ?? 1000;
 
